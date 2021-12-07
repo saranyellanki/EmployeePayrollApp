@@ -59,7 +59,9 @@ class EmployeePayrollData {
         const options = { year: 'numeric', month: 'long', day: 'numeric' };
         const empDate = startDate == undefined ? 'undefined' :
                         startDate.toLocaleDateString('en-US', options);
-        if((new Date(empDate)<=new Date()))
+        let previous = new Date();
+        previous.setDate(previous.getDate() - 30);
+        if((new Date(empDate)<=new Date()) && new Date(empDate)>=previous)
             this._startDate = empDate;
         else throw "Invalid Date"
     }
@@ -69,6 +71,15 @@ class EmployeePayrollData {
         ", date : "+this.startDate+", profilepic : "+this.profilePic+", department : "+this.department+", note : "+this.note;
     }
 }
+let obj = new EmployeePayrollData();
+try{
+    obj.startDate = new Date('1/5/2021');
+    console.log(obj);
+}catch (e){
+    console.error(e);
+}
+
+
 const save = () => {
     try{
         let employeePayrollData = new EmployeePayrollData(); 
