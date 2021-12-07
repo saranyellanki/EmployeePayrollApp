@@ -19,9 +19,9 @@ body {
 .logo-content {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     border: 0px solid green;
+    width: 80%;
 }
 
 .logo-content-img {
